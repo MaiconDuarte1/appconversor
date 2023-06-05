@@ -12,7 +12,7 @@ resolucoes = ["144p", "240p", "360p", "480p", "720p", "1080p"]
 ct.set_appearance_mode("dark")
 ct.set_default_color_theme("dark-blue")
 janela = ct.CTk()
-janela.title("APP CONVERSOR 1.5")
+janela.title("APP CONVERSOR 1.8")
 janela.resizable(False, False)
 janela.geometry("640x480")
 janela.iconbitmap(os.path.dirname(os.path.abspath(__file__))+"/converter.ico")
@@ -20,9 +20,11 @@ janela.iconbitmap(os.path.dirname(os.path.abspath(__file__))+"/converter.ico")
 tabview = ct.CTkTabview(janela, width=640, height=440)
 tabview.grid()
 tabview.add("YOUTUBE")
+tabview.add("YOUTUBE PLAYLIST")
 tabview.add("MP4 PARA MP3")
 tabview.add("OPÇÕES")
 tabview.tab("YOUTUBE")
+tabview.tab("YOUTUBE PLAYLIST")
 tabview.tab("MP4 PARA MP3")
 tabview.tab("OPÇÕES")
 
@@ -58,6 +60,40 @@ botao_paramp4 = ct.CTkButton(tabview.tab("YOUTUBE"), text="CONVERTER PARA MP4", 
 botao_paramp4.place(x=315, y=255)
 
 
+#CONFIGURAÇÃO DE PLAYLIST
+
+label_textomensagemPL = ct.CTkLabel(tabview.tab("YOUTUBE PLAYLIST"), text="INSIRA O LINK DA PLAYLIST:", font=("Impact", 22))
+label_textomensagemPL.place(x=197, y=15)
+
+caixa_textoPL = ct.CTkEntry(tabview.tab("YOUTUBE PLAYLIST"), width=325, height=27)
+caixa_textoPL.place(x=150, y=50)
+
+label_textoresPL = ct.CTkLabel(tabview.tab("YOUTUBE PLAYLIST"), text="SELECIONE A RESOLUÇÃO DESEJADA:", font=("Impact", 17))
+label_textoresPL.place(x=195, y=85)
+
+combobox_resPL = ct.CTkComboBox(tabview.tab("YOUTUBE PLAYLIST"), values=resolucoes, width=325, height=27)
+combobox_resPL.place(x=150, y=120)
+
+label_localsalvarPL = ct.CTkLabel(tabview.tab("YOUTUBE PLAYLIST"), text="SALVAR ARQUIVOS EM:", font=("Impact", 17))
+label_localsalvarPL.place(x=240, y=155)
+
+botao_localsalvarPL = ct.CTkButton(tabview.tab("YOUTUBE PLAYLIST"), text="DIRETÓRIO", command=f.botaodiretorio, width=325, height=27)
+botao_localsalvarPL.place(x=150, y=190)
+
+meu_dir = ''
+label_direscolhidoPL = ct.CTkLabel(tabview.tab("YOUTUBE PLAYLIST"), text=meu_dir)
+label_direscolhidoPL.place(x=225, y=225)
+
+
+botao_paramp3PL = ct.CTkButton(tabview.tab("YOUTUBE PLAYLIST"), text="CONVERTER PARA MP3", command=f.playlistparamp3, width=250, height=27)
+botao_paramp3PL.place(x=50, y=255)
+
+botao_paramp4PL = ct.CTkButton(tabview.tab("YOUTUBE PLAYLIST"), text="CONVERTER PARA MP4", command=f.playlistparamp4, width=250, height=27)
+botao_paramp4PL.place(x=315, y=255)
+
+
+
+
 #CONFIGURAÇÃO DA JANELA DE CONVERSÃO DE MP4 PARA MP3
 
 label_selectarquivo = ct.CTkLabel(tabview.tab("MP4 PARA MP3"), text="SELECIONE O ARQUIVO PARA CONVERSÃO:", font=("Impact", 22))
@@ -79,5 +115,5 @@ menu_opcoes.place(x=150, y=50)
 label_textsobreOP = ct.CTkLabel(tabview.tab("OPÇÕES"), text="Aplicativo Desenvolvido Por Python Júnior", font=("Impact", 22))
 label_textsobreOP.place(x=130, y=85)
 
-label_textsobreOP2 = ct.CTkLabel(tabview.tab("OPÇÕES"), text="Versão Alpha 1.5", font=("Impact", 22))
+label_textsobreOP2 = ct.CTkLabel(tabview.tab("OPÇÕES"), text="Versão Beta 1.8", font=("Impact", 22))
 label_textsobreOP2.place(x=235, y=120)
